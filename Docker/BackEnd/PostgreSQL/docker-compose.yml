@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: brainstormr-postgresql
+    hostname: brainstormr-postgresql
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=brainstormr
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - /mnt/appdata/brainstormr/brainstormr-postgres/data:/var/lib/postgresql/data # Where postgresql.conf is located.
+      - /mnt/appdata/brainstormr/brainstormr-postgres/config:/etc/postgresql # Example of postgresql.conf 
+    ports:
+      - 3501:8080
+    networks:
+      - brainstormr
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+networks:
+  brainstormr:
+    external: true

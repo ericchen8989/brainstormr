@@ -1,0 +1,19 @@
+tunnel:  XXX
+credentials-file: /home/nonroot/.cloudflared/XXX.json
+
+# NOTE: You should only have one ingress tag, so if you uncomment one block comment the others
+
+#forward all traffic to Reverse Proxy w/ SSL
+ingress:
+  - service: https://brainstormr-traefik:443
+    originRequest:
+      originServerName: brainstormr-traefik.pcscorp.dev
+#forward all traffic to Reverse Proxy w/ SSL and no TLS Verify
+#ingress:
+#  - service: https://REVERSEPROXYIP:PORT
+#    originRequest:
+#      noTLSVerify: true
+
+#forward all traffic to reverse proxy over http
+#ingress:
+#  - service: http://REVERSEPROXYIP:PORT

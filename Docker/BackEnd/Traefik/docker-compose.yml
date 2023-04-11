@@ -1,0 +1,51 @@
+version: '3'
+services:
+  brainstormr-traefik:
+    container_name: brainstormr-traefik
+    hostname: brainstormr-traefik
+    image: traefik:v2.9.1
+    environment:
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN}    
+    ports:
+      - 8008:80
+      - 44305:443
+      - 8182:8080
+      
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/appdata/brainstormr/traefik/:/etc/traefik/
+
+    networks:
+      - brainstormr # rename this to your custom docker network
+#    labels:
+#      traefik.http.routers.api.rule: Host(`traefik.domain.com`)    # Define the subdomain for the traefik dashboard.
+#      traefik.http.routers.api.entryPoints: https    # Set the Traefik entry point.
+#      traefik.http.routers.api.service: api@internal    # Enable Traefik API.
+#      traefik.http.routers.api.middlewares: auth@file    # If your are using Authelia, then this label will secure the traefik dashboard.
+#      traefik.enable: true   # Enable Traefik reverse proxy for the Traefik dashboard.
+
+    restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+
+  # brainstormr-dockersocket:
+  #   container_name: brainstormr-dockersocket
+  #   hostname: brainstormr-dockersocket
+  #   image: tecnativa/docker-socket-proxy
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   networks:
+  #     - brainstormr
+  #   environment:
+  #     CONTAINERS: 1
+  #     POST: 0
+  #   privileged: true
+  #   labels:
+  #     - com.centurylinklabs.watchtower.enable=true
+  #   restart: unless-stopped
+
+
+networks:
+  brainstormr:    # rename this to your custom docker network.
+    driver: bridge
+    external: true

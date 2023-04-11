@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  cloudflared:
+    #build: https://github.com/cloudflare/cloudflared.git
+    image: cloudflare/cloudflared:2022.10.3
+    container_name: brainstormr-cloudflared
+    hostname: brainstormr-cloudflared
+    restart: unless-stopped
+    environment:
+      - PUID=1001
+      - PGID=1001
+    command: tunnel --config /home/nonroot/.cloudflared/config.yaml run 07b9ad98-419b-4f00-84f8-30b4e25ec363   # Replace UUID.
+    volumes:
+      - /mnt/appdata/brainstormr/cloudflared/data:/home/nonroot/.cloudflared/
+    extra_hosts:
+      - "brainstormr-vps.pcscorp.dev:127.0.0.1"
+    networks:
+      - brainstormr
+
+networks:
+  brainstormr:
+    driver: bridge
+    external: true

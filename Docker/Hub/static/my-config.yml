@@ -1,0 +1,468 @@
+appConfig:
+  theme: colorful
+  language: en
+  layout: auto
+  iconSize: small
+pageInfo:
+  title: Brainstormr Hub
+  description: Welcome to the Brainstormr dashboard!
+  navLinks:
+    - title: GitHub
+      path: https://github.com/Lissy93/dashy
+      target: newtab
+    - title: Documentation
+      path: https://dashy.to/docs
+      target: newtab
+  footerText: ''
+sections:
+  - name: System Monitoring
+    icon: fas fa-monitor-heart-rate
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Glances
+        description: Simple resource usage
+        icon: hl-glances
+        id: 0_1739_glances
+      - title: Dozzle
+        description: Docker container web log viewer
+        icon: hl-dozzle
+        url: http://100.77.38.90:2123/login
+        target: newtab
+        id: 1_1739_dozzle
+      - title: HealthChecks
+        description: Cron Job Monitoring
+        icon: hl-healthchecks
+        url: https://healthchecks.io/checks/
+        id: 2_1739_healthchecks
+      - title: Grafana
+        description: Data visualised on dashboards
+        icon: hl-grafana
+        id: 3_1739_grafana
+  - name: Network Monitoring
+    icon: fas fa-tachometer-alt-fast
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Tailscale
+        description: 'Tailscale is a zero config VPN for building secure networks. '
+        icon: https://cdn.theorg.com/cebbcbf1-7c0a-4a89-a4dd-8975e8da9bc8_thumb.jpg
+        url: https://login.tailscale.com/admin/machines
+        target: newtab
+        id: 0_1840_tailscale
+      - title: Uptime Kuma
+        description: A self-hosted monitoring tool.
+        icon: https://github.com/louislam/uptime-kuma/raw/master/public/icon.svg
+        url: http://100.111.45.55:3001
+        target: newtab
+        id: 1_1840_uptimekuma
+      - title: SmokePing
+        description: Network latency monitoring
+        icon: hl-smokeping
+        id: 2_1840_smokeping
+      - title: StatPing
+        description: Up-time monitoring for local service
+        icon: hl-statping
+        id: 3_1840_statping
+      - title: LibreSpeed
+        description: Local network speed and latency test
+        icon: hl-librespeed
+        id: 4_1840_librespeed
+      - title: NetData
+        description: Real-time system resource usage
+        icon: hl-netdata
+        id: 5_1840_netdata
+      - title: Zabbix
+        description: IT Monitoring
+        icon: hl-zabbix
+        id: 6_1840_zabbix
+  - name: Networking
+    icon: fas fa-network-wired
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: MalTrail
+        description: Malicious traffic detection system
+        icon: hl-router
+        id: 0_1064_maltrail
+      - title: Cloudflare
+        description: >-
+          Cloudflare secures and ensures the reliability of your external-facing
+          resources such as websites, APIs, and applications.
+        icon: hl-cloudflare
+        url: https://dash.cloudflare.com/
+        target: newtab
+        id: 1_1064_cloudflare
+      - title: Google Domain
+        description: >-
+          Google Domains is a domain name registrar operated by Google. The
+          service offers domain registration, DNS hosting, dynamic DNS, domain
+          forwarding, and email forwarding. It provides native integration
+          support for Google Cloud DNS and Google Workspace. 
+        icon: >-
+          https://joshualevi.com/wp-content/uploads/2019/08/logo_google_domains_192px_Round_lockup.jpg
+        url: https://domains.google.com/registrar/pcscorp.dev?hl=en
+        target: newtab
+        id: 2_1064_googledomain
+  - name: Productivity
+    icon: fas fa-bookmark
+    displayData:
+      sortBy: alphabetical
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Gmail
+        description: Gmail is a free email service provided by Google.
+        icon: https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_256px.png
+        url: https://mail.google.com/mail/u/2/#inbox
+        target: newtab
+        id: 0_1302_gmail
+      - title: Raindrop.io
+        description: All-in-one bookmark manager Intuitive. Powerful. Runs everywhere
+        icon: https://avatars.githubusercontent.com/u/6144133?s=200&v=4
+        url: https://app.raindrop.io/my/0
+        target: newtab
+        id: 1_1302_raindropio
+      - title: Wallabag
+        description: Bookmark Manager
+        icon: hl-wallabag
+        id: 2_1302_wallabag
+      - title: ArchiveBox
+        description: Archive Manager
+        icon: hl-archivebox
+        id: 3_1302_archivebox
+  - name: Code Analysis & Monitoring
+    icon: fas fa-code
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Snyk
+        description: Dependency vulnerability scanning
+        icon: favicon
+        url: https://snyk.io
+        id: 0_2411_snyk
+      - title: Code Beat
+        description: Quality and complexity checking
+        icon: favicon
+        url: https://codebeat.co
+        id: 1_2411_codebeat
+      - title: Is Maintained
+        description: Issue status and response times
+        icon: favicon
+        url: https://isitmaintained.com
+        id: 2_2411_ismaintained
+      - title: FOSSA
+        description: Dependency license checking
+        icon: favicon
+        url: https://fossa.com/
+        id: 3_2411_fossa
+      - title: Sonatype
+        description: Automated code security scanning
+        icon: favicon
+        url: https://lift.sonatype.com
+        id: 4_2411_sonatype
+      - title: DeepSource
+        description: Source code analysis
+        icon: favicon
+        url: https://deepsource.io
+        id: 5_2411_deepsource
+      - title: DeepScan
+        description: Static analysis for finding runtime errors and quality issues
+        icon: favicon
+        url: https://deepscan.io
+        id: 6_2411_deepscan
+      - title: LGTM
+        description: Prevention of zero-days through static analysis
+        icon: favicon
+        url: https://lgtm.com
+        id: 7_2411_lgtm
+      - title: CodeSense
+        description: Project stats and trends
+        icon: favicon
+        url: https://codescene.io
+        id: 8_2411_codesense
+  - name: Project Stats & Metrics
+    icon: fas fa-analytics
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Repo Analytics
+        description: Recent traffic and clone stats
+        icon: favicon
+        url: https://repo-analytics.github.io
+        id: 0_2115_repoanalytics
+      - title: Visual Source
+        description: Historical code and contributor graphic
+        icon: favicon
+        url: https://www.visualsource.net
+        id: 1_2115_visualsource
+      - title: StarTrack
+        description: GitHub Stars over Time
+        icon: https://seladb.github.io/StarTrack-js/star-icon.png
+        url: https://seladb.github.io
+        id: 2_2115_startrack
+      - title: GitFlowChart
+        description: Branch Topology
+        icon: https://app.gfc.io/66ca1ebe6993cbfabdfba26cb9534b76.svg
+        url: https://app.gfc.io/github
+        id: 3_2115_gitflowchart
+      - title: GitMemory
+        description: Repo activity archive
+        icon: favicon
+        url: https://githubmemory.com
+        id: 4_2115_gitmemory
+      - title: Cauldron
+        description: Development community stats
+        icon: favicon
+        url: https://cauldron.io
+        id: 5_2115_cauldron
+  - name: Socials & Review Sites
+    icon: fas fa-sparkles
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Product Hunt
+        icon: favicon
+        url: https://www.producthunt.com
+        id: 0_1998_producthunt
+      - title: Bounty Source
+        description: ''
+        icon: favicon
+        url: https://www.bountysource.com
+        id: 1_1998_bountysource
+      - title: Alternative To
+        icon: favicon
+        url: https://alternativeto.net
+        id: 2_1998_alternativeto
+      - title: Awesome-Selfhosted
+        description: >-
+          Self-hosting is the practice of hosting and managing applications on
+          your own server(s) instead of consuming from SaaSS providers.
+        icon: google
+        url: https://github.com/awesome-selfhosted/awesome-selfhosted
+        id: 3_1998_awesomeselfhosted
+      - title: StackShare
+        icon: favicon
+        url: https://stackshare.io
+        id: 4_1998_stackshare
+      - title: Slant
+        icon: favicon
+        url: https://www.slant.co
+        id: 5_1998_slant
+  - name: Config Helpers
+    icon: fas fa-wrench
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Schema Example
+        icon: generative
+        url: >-
+          https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2FLissy93%2Fdashy%2Fmaster%2Fsrc%2Futils%2FConfigSchema.json
+        id: 0_1353_schemaexample
+      - title: Config Validator
+        icon: generative
+        url: https://www.jsonschemavalidator.net/s/JFUj7X9J
+        id: 1_1353_configvalidator
+      - title: JSON to YAML
+        icon: generative
+        url: https://jsonformatter.org/json-to-yaml
+        id: 2_1353_jsontoyaml
+      - title: YAML to JSON
+        icon: generative
+        url: https://jsonformatter.org/yaml-to-json
+        id: 3_1353_yamltojson
+      - title: Example Configs
+        icon: generative
+        url: https://gist.github.com/Lissy93/000f712a5ce98f212817d20bc16bab10
+        id: 4_1353_exampleconfigs
+      - title: Config Docs
+        icon: generative
+        url: https://dashy.to/docs/configuring
+        id: 5_1353_configdocs
+  - name: Brainstormr
+    icon: fas fa-cloud
+    displayData:
+      sortBy: alphabetical
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Traefik
+        description: >-
+          Modern HTTP reverse proxy and load balancer that makes deploying
+          microservices easy.
+        icon: hl-traefik
+        url: http://100.111.45.55:8181/dashboard/#/
+        target: newtab
+        id: 0_1171_traefik
+      - title: Portainer
+        description: >-
+          Self-service container service delivery platform. It is the definitive
+          container management GUI for Kubernetes, Docker and Swarm.
+        icon: hl-portainer
+        url: http://100.111.45.55:9443/#!/auth
+        target: newtab
+        id: 1_1171_portainer
+      - title: Adminer
+        description: Full-featured database management tool written in PHP.
+        icon: hl-adminer
+        url: http://100.111.45.55:8686/
+        target: newtab
+        id: 2_1171_adminer
+      - title: Authentik
+        description: >-
+          Authentik is an open-source Identity Provider focused on flexibility
+          and versatility.
+        icon: hl-authentik
+        url: https://vpsauth.pcscorp.dev
+        target: newtab
+        id: 3_1171_authentik
+      - title: Duplicati
+        description: >-
+          Duplicati is a backup client that securely stores encrypted,
+          incremental, compressed remote backups of local files on cloud storage
+          services and remote file servers.
+        icon: https://www.duplicati.com/images/duplicati-fb-share-v1.png
+        url: https://duplicati.pcscorp.dev/
+        target: newtab
+        id: 4_1171_duplicati
+      - title: PwdPusher
+        description: >-
+          Password Pusher is an application to securely send passwords over the
+          web.
+        icon: >-
+          https://pwpush.com/packs/media/img/logo-transparent-sm-bare-30e2f18d9b52adb43f837af03083f190.png
+        url: https://pwdpusher.pcscorp.dev
+        target: newtab
+        id: 5_1171_pwdpusher
+      - title: Vscode
+        description: Run VS Code on any machine anywhere and access it in the browser.
+        icon: hl-vscode
+        url: https://vscode.pcscorp.dev/
+        target: newtab
+        id: 6_1171_vscode
+      - title: Matomo
+        description: >-
+          Matomo, formerly Piwik, is a free and open source web analytics
+          application developed by a team of international developers, that runs
+          on a PHP/MySQL webserver. It tracks online visits to one or more
+          websites and displays reports on these visits for analysis. 
+        icon: >-
+          https://pbs.twimg.com/profile_images/1064364763008819200/n0MGIAF6_400x400.jpg
+        url: https://matomo.pcscorp.dev/
+        target: newtab
+        id: 7_1171_matomo
+      - title: Uptime Kuma
+        description: A self-hosted monitoring tool.
+        icon: hl-uptime-kuma
+        url: http://100.77.38.90:3001
+        target: newtab
+        id: 8_1171_uptimekuma
+      - title: InfluxDB
+        description: >-
+          InfluxDB is an open-source time series database developed by the
+          company InfluxData.
+        icon: https://assets.zabbix.com/img/brands/influxdb.svg
+        url: http://100.77.38.90:8086/signin
+        target: newtab
+        id: 9_1171_influxdb
+      - title: cryptgeon
+        description: >-
+          cryptgeon is a secure, open source note / file sharing service
+          inspired by PrivNote written in rust & svelte. 
+        icon: https://github.com/cupcakearmy/cryptgeon/raw/main/design/Github.png
+        url: https://crypt.pcscorp.dev/
+        target: newtab
+        id: 10_1171_cryptgeon
+  - name: HomeLab Docs
+    icon: >-
+      https://b.thumbs.redditmedia.com/Flac-ySmslzY0SE583PNA42rFbcYxLt7hqgCeUrC11s.png
+    displayData:
+      sortBy: default
+      rows: 2
+      cols: 2
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: GitLab-Maaslandjes
+        description: Prive GitLab of DrDirtyDevil
+        icon: hl-gitlab
+        url: https://git.maaslandjes.nl/DrDirtyDevil/danny
+        target: newtab
+        id: 0_1089_gitlabmaaslandjes
+      - title: GitLab-Norkz
+        description: >-
+          GitLab Inc. is an open-core company that provides GitLab, a DevOps
+          software package that combines the ability to develop, secure, and
+          operate software in a single application.
+        icon: favicon
+        url: https://gitlab.com/dashboard/projects?personal=true&sort=name_asc
+        target: newtab
+        id: 1_1089_gitlabnorkz
+      - title: Github-Norkz
+        description: >-
+          GitHub, Inc. is a provider of Internet hosting for software
+          development and version control using Git.
+        icon: favicon
+        url: >-
+          https://github.com/NorkzYT?tab=repositories&q=&type=&language=&sort=stargazers
+        target: newtab
+        id: 2_1089_githubnorkz
+      - title: IBRACORP
+        description: >-
+          IBRACORP was formed in 2020 with the mission to bring information
+          technology knowledge and services to the world solving problems and
+          providing effective solutions..
+        icon: https://ibracorp.io/assets/logo.png
+        url: https://ibracorp.io/
+        target: newtab
+        id: 3_1089_ibracorp
+      - title: LINUXGurus
+        description: >-
+          Website that publishes useful and practical tutorials for system
+          admins and DevOps engineers and Linux enthusiasts.
+        icon: >-
+          https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/800px-Tux.svg.png
+        url: https://www.linuxgurus.in/
+        target: newtab
+        id: 4_1089_linuxgurus
+      - title: DEV
+        description: >-
+          We're a place where coders share, stay up-to-date and grow their
+          careers.
+        icon: >-
+          https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png
+        url: https://dev.to/
+        target: newtab
+        id: 5_1089_dev

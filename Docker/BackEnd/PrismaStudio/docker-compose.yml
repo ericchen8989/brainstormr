@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  prisma-studio:
+    image: timothyjmiller/prisma-studio:latest
+    container_name: brainstormr-prisma-studio
+    hostname: brainstormr-prisma-studio
+    restart: unless-stopped
+    environment:
+      - POSTGRES_URL=${DATABASE_URL}
+    ports:
+      - 5425:5555
+    networks:
+      - brainstormr
+
+networks:
+  brainstormr:
+    external: true

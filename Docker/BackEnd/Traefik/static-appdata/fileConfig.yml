@@ -1,0 +1,166 @@
+http:
+  routers:
+
+########################################################################################################################################################################
+
+  ## EXTERNAL ROUTING ##
+
+    # Traefik routing
+    traefik:
+      entryPoints:
+        - https
+      rule: 'Host(`brainstormr-traefik.pcscorp.dev`)'
+      service: traefik
+      middlewares:
+        - "securityHeaders"
+        - "authentik-auth"
+
+    #authentik auth routing
+    authentik:
+      entryPoints:
+        - https
+      rule: 'Host(`brainstormr-auth.pcscorp.dev`)'
+      service: authentik-auth
+      middlewares:
+        - "securityHeaders"
+
+    #Brainstormr routing
+    brainstormr:
+      entryPoints:
+        - https
+      rule: 'Host(`brainstormr.pcscorp.dev`)'
+      service: brainstormr
+      middlewares:
+        - "securityHeaders"
+
+
+    #Prisma Studio routing
+    prisma-studio:
+      entryPoints:
+        - https
+      rule: 'Host(`brainstormr-studio.pcscorp.dev`)'
+      service: prisma-studio
+      middlewares:
+        - "securityHeaders"
+
+    #Brainstormr Dashy Hub service
+    brainstormr-dashy:
+      entryPoints:
+        - https
+      rule: 'Host(`brainstormr-hub.pcscorp.dev`)'
+      service: brainstormr-dashy
+      middlewares:
+        - "securityHeaders"
+
+########################################################################################################################################################################
+
+  ## SERVICES ##
+  services:
+      # Traefik service
+    traefik:
+      loadBalancer:
+        servers:
+          - url: http://brainstormr-traefik:8080
+
+    # VSCode service
+    vscode:
+      loadbalancer:
+        servers:
+          - url: http://brainstormr-vscode:8443
+
+    # Authentic auth service
+    authentik-auth:
+      loadbalancer:
+        servers:
+          - url: http://brainstormr-authentik:9000
+
+    # Brainstormr service
+    brainstormr:
+      loadbalancer:
+        servers:
+          - url: http://brainstormr:3502
+
+    # Prisma Studio service
+    prisma-studio:
+      loadbalancer:
+        servers:
+          - url: http://brainstormr-prisma-studio:5555
+
+    # Brainstormr Dashy Hub service
+    brainstormr-dashy:
+      loadbalancer:
+        servers:
+          - url: http://brainstormr-dashy:80
+
+
+########################################################################################################################################################################
+
+  ## MIDDLEWARES ##
+  middlewares:
+    # Authentik guard
+    authentik-auth:
+      forwardauth:
+        address: http://brainstormr-authentik:9000/outpost.goauthentik.io/auth/traefik
+        trustForwardHeader: true
+        authResponseHeaders:
+          - X-authentik-username
+          - X-authentik-groups
+          - X-authentik-email
+          - X-authentik-name
+          - X-authentik-uid
+          - X-authentik-jwt
+          - X-authentik-meta-jwks
+          - X-authentik-meta-outpost
+          - X-authentik-meta-provider
+          - X-authentik-meta-app
+          - X-authentik-meta-version
+  
+
+    # Pterodactyl corsALL
+    corsAll:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        customResponseHeaders:
+          X-Forwarded-Proto: "https"
+        accessControlAllowMethods:
+          - OPTION
+          - POST
+          - GET
+          - PUT
+          - DELETE
+        accessControlAllowHeaders:
+          - "*"
+        accessControlAllowOriginList:
+          - "*"
+        accessControlMaxAge: 100
+        addVaryHeader: true
+
+    # Security headers
+    securityHeaders:
+      headers:
+        customResponseHeaders:
+          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+          server: ""
+        sslProxyHeaders:
+          X-Forwarded-Proto: https
+        referrerPolicy: "same-origin"
+        hostsProxyHeaders:
+          - "X-Forwarded-Host"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        contentTypeNosniff: true
+        browserXssFilter: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsSeconds: 63072000
+        stsPreload: true
+    gzip:
+      compress: {}
+
+########################################################################################################################################################################
+
+    traefik-real-ip:
+        plugin:
+            traefik-real-ip:
+                excludednets: 1.1.1.1/24

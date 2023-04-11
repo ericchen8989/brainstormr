@@ -1,0 +1,4 @@
+# Ignore artifacts:
+node_modules
+__generated__
+.next

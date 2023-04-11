@@ -1,0 +1,20 @@
+# Use root/example as user/password credentials
+
+version: '3.1'
+services:
+  brainstormr-adminer:
+    image: adminer:4.8.1
+    container_name: brainstormr-adminer
+    hostname: brainstormr-adminer    
+    restart: unless-stopped
+    ports:
+      - 3509:8080
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - brainstormr
+
+networks:
+  brainstormr:
+    driver: bridge
+    external: true

@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  brainstormr:
+    image: norkz/brainstormr:1.0
+    container_name: brainstormr
+    hostname: brainstormr
+    #tty: true
+    volumes:
+     - /mnt/appdata/brainstormr/frontend:/mnt
+    ports:
+     - 3502:8080
+    restart: unless-stopped
+    networks:
+      - brainstormr
+
+networks:
+  brainstormr:
+    external: true
